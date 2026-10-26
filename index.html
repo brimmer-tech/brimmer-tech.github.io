@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Computer Science at Brimmer and May</title>
+<meta name="description" content="Course sites for AP Computer Science A and AP Computer Science Principles, plus classroom apps for teachers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #13283D;
+    --ink-soft: #4A5B6C;
+    --paper: #F3F6F8;
+    --panel: #FFFFFF;
+    --line: #D5DDE4;
+    --cobalt: #2F5BEA;
+    --sun: #F5C842;
+    --csa: #2F5BEA;
+    --csp: #1E8C6E;
+    --focus: #F5C842;
+    color-scheme: light;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #E8EEF3;
+      --ink-soft: #A6B4C1;
+      --paper: #0F1C29;
+      --panel: #172838;
+      --line: #2A3E51;
+      --cobalt: #7F9EFF;
+      --csa: #7F9EFF;
+      --csp: #4FC9A6;
+      color-scheme: dark;
+    }
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 1.0625rem/1.6 "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  }
+  a { color: inherit; }
+  a:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; border-radius: 6px; }
+
+  .wrap { max-width: 68rem; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* Hero */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: end;
+    padding: 4.5rem 0 3rem;
+    border-bottom: 2px solid var(--ink);
+  }
+  .school { margin: 0 0 1rem; font-weight: 700; color: var(--ink-soft); }
+  h1 {
+    margin: 0;
+    font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.75rem, 8vw, 5.75rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    max-width: 11ch;
+  }
+  .lede { margin: 1.5rem 0 0; font-size: 1.25rem; max-width: 34ch; color: var(--ink-soft); }
+  .sprite { width: clamp(7rem, 16vw, 11rem); height: auto; display: block; }
+  .sprite .body { fill: var(--ink); }
+  .sprite .eye  { fill: var(--paper); }
+  .sprite .light { fill: var(--sun); }
+  @media (prefers-reduced-motion: no-preference) {
+    .sprite .light { animation: blink 2.4s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0.15; } }
+  }
+
+  /* Sections */
+  section { padding: 3rem 0; }
+  h2 {
+    font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+    letter-spacing: -0.02em;
+    margin: 0 0 0.25rem;
+  }
+  .section-note { margin: 0 0 1.75rem; color: var(--ink-soft); max-width: 55ch; }
+
+  .courses { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .course {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 0.75rem;
+    padding: 1.75rem;
+    background: var(--panel);
+    border: 2px solid var(--line);
+    border-left: 10px solid var(--accent);
+    border-radius: 4px 14px 14px 4px;
+    text-decoration: none;
+    transition: border-color 0.15s;
+  }
+  .course:hover { border-color: var(--accent); }
+  .course.csa { --accent: var(--csa); }
+  .course.csp { --accent: var(--csp); }
+  .course h3 {
+    margin: 0;
+    font-family: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    line-height: 1.15;
+  }
+  .course h3 small { display: block; font-size: 1rem; font-weight: 500; color: var(--accent); margin-bottom: 0.25rem; }
+  .course p { margin: 0; color: var(--ink-soft); }
+  .go { font-weight: 700; color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+
+  .teachers {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 2rem;
+    border: 2px dashed var(--line);
+    border-radius: 14px;
+  }
+  .teachers h2 { margin-bottom: 0.5rem; }
+  .teachers p { margin: 0; color: var(--ink-soft); max-width: 52ch; }
+  .button {
+    display: inline-block;
+    padding: 0.85rem 1.4rem;
+    background: var(--ink);
+    color: var(--paper);
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+  .button:hover { background: var(--cobalt); }
+
+  footer { padding: 2rem 0 3rem; color: var(--ink-soft); font-size: 0.95rem; border-top: 1px solid var(--line); }
+  footer p { margin: 0; }
+
+  @media (max-width: 720px) {
+    .hero { grid-template-columns: 1fr; padding-top: 3rem; }
+    .sprite { order: -1; width: 6rem; }
+    .courses { grid-template-columns: 1fr; }
+    .teachers { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <div>
+        <p class="school">Brimmer and May School</p>
+        <h1>Computer Science</h1>
+        <p class="lede">Welcome! Students, pick your course below. Teachers, the classroom apps are at the bottom.</p>
+      </div>
+      <svg class="sprite" viewBox="0 0 11 10" role="img" aria-label="A small pixel robot" shape-rendering="crispEdges"></svg>
+    </header>
+
+    <section aria-labelledby="students">
+      <h2 id="students">Students</h2>
+      <p class="section-note">Study guides, practice, and resources for your AP course.</p>
+      <div class="courses">
+        <a class="course csa" href="https://brimmer-tech.github.io/ap-csa/">
+          <h3><small>Java</small>AP Computer Science A</h3>
+          <p>Unit study guides and practice that follow CodeHS and CSAwesome.</p>
+          <span class="go">Open the CSA site</span>
+        </a>
+        <a class="course csp" href="https://brimmer-tech.github.io/ap-csp/">
+          <h3><small>MakeCode Arcade</small>AP Computer Science Principles</h3>
+          <p>Unit study guides, game projects, and AP exam prep.</p>
+          <span class="go">Open the CSP site</span>
+        </a>
+      </div>
+    </section>
+
+    <section aria-labelledby="teachers">
+      <div class="teachers">
+        <div>
+          <h2 id="teachers">Teachers</h2>
+          <p>Browse interactive apps built for these classes. Try them out, borrow what’s useful, and share feedback.</p>
+        </div>
+        <a class="button" href="https://brimmer-tech.github.io/artifacts/">Review the apps</a>
+      </div>
+    </section>
+
+    <footer>
+      <p>Maintained by Mr. Ware, Brimmer and May Computer Science.</p>
+    </footer>
+  </main>
+
+<script>
+  // Draws the pixel robot from a text pattern: X = body, O = eye, Y = antenna light
+  const rows = [
+    ".....Y.....",
+    ".....X.....",
+    "..XXXXXXX..",
+    ".XXXXXXXXX.",
+    ".XXOXXXOXX.",
+    ".XXXXXXXXX.",
+    ".XXX...XXX.",
+    "..XXXXXXX..",
+    "...X...X...",
+    "..XX...XX.."
+  ];
+  const cls = { X: "body", O: "eye", Y: "light", ".": null };
+  const svg = document.querySelector(".sprite");
+  const ns = "http://www.w3.org/2000/svg";
+  rows.forEach((row, y) => [...row].forEach((ch, x) => {
+    if (!cls[ch]) return;
+    const r = document.createElementNS(ns, "rect");
+    r.setAttribute("x", x); r.setAttribute("y", y);
+    r.setAttribute("width", 1); r.setAttribute("height", 1);
+    r.setAttribute("class", cls[ch]);
+    svg.appendChild(r);
+  }));
+</script>
+</body>
+</html>
