@@ -150,6 +150,32 @@
     .courses { grid-template-columns: 1fr; }
     .teachers { grid-template-columns: 1fr; }
   }
+  .video-block {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: 2rem;
+    align-items: center;
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .video-frame {
+    border: 2px solid var(--ink);
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--ink);
+    aspect-ratio: 3 / 2;
+  }
+  .video-frame video { display: block; width: 100%; height: 100%; object-fit: contain; }
+  .video-text h2 { margin-bottom: 0.75rem; }
+  .video-text p { margin: 0 0 1rem; color: var(--ink-soft); max-width: 40ch; }
+  .steps { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
+  .steps li {
+    font-weight: 700; padding: 0.35rem 0.9rem; border-radius: 999px;
+    background: var(--panel); border: 2px solid var(--line);
+  }
+  @media (max-width: 720px) {
+    .video-block { grid-template-columns: 1fr; gap: 1.25rem; }
+  }
 </style>
 </head>
 <body>
@@ -162,6 +188,24 @@
       </div>
       <svg class="sprite" viewBox="0 0 11 10" role="img" aria-label="A small pixel robot" shape-rendering="crispEdges"></svg>
     </header>
+
+    <section class="video-block" aria-labelledby="vibe">
+      <div class="video-frame">
+        <video controls preload="metadata" playsinline poster="vibe-coding-poster.jpg">
+          <source src="vibe-coding.mp4" type="video/mp4">
+          Your browser can’t play this video. <a href="vibe-coding.mp4">Download it instead.</a>
+        </video>
+      </div>
+      <div class="video-text">
+        <h2 id="vibe">What is vibe coding?</h2>
+        <p>Vibe coding means building an app by describing what you want to an AI, testing what it makes, and refining it until it works. This short video walks through it with the aquarium project.</p>
+        <ul class="steps" aria-label="The three steps">
+          <li>Describe</li>
+          <li>Test</li>
+          <li>Refine</li>
+        </ul>
+      </div>
+    </section>
 
     <section aria-labelledby="students">
       <h2 id="students">Students</h2>
